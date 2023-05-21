@@ -3,15 +3,20 @@
  * @param {string} query - the query parameter
  * @returns  HTML input query template.
  */
-const createQueryTemplate = (query = "") =>
-  `<input type="text" name="query" value="${query}" placeholder="search query...">`;
-const insertQueryTemplate = (template) =>
-  document.querySelector(".query-container").insertAdjacentHTML("beforeend", template);
+const createQueryTemplate = (query = "") => `<input type="text" class="query-input" name="query" value="${query}" placeholder="search query...">`;
+const insertQueryTemplate = (template) => document.querySelector(".query-container").insertAdjacentHTML("beforeend", template);
 
+/**
+ * Builds up the query array from the UI.
+ */
 const buildQueryArray = () => {
-  var queries = [];
+    let queries = [];
 
-  saveOptions(queries);
+    let elems = document.querySelectorAll(".query-input");
+    elems.forEach(elem => {
+        queries.push(elem.value);
+    });
+    saveOptions(queries);
 };
 
 // Saves options to chrome.storage
@@ -35,9 +40,7 @@ const saveOptions = (queries) => {
 // stored in chrome.storage.
 const restoreOptions = () => {
   chrome.storage.sync.get(
-    {
-      queries: [],
-    },
+    {queries: []},
     (items) => {
       buildOptionsDisplay(items.queries);
     }
@@ -49,6 +52,12 @@ const restoreOptions = () => {
  * @param {array} queries - the query parameters.
  */
 const buildOptionsDisplay = (queries) => {
+
+    // If no queries are stored in localStorage, add one empty query by default.
+    if(queries.length == 0) {
+        createQueryTemplate();
+    }
+
   // for each query parameter, create and append the HTML element.
   queries.forEach((query) => {
     let template = createQueryTemplate(query);
@@ -65,4 +74,4 @@ document.querySelector(".add-query").addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
-document.getElementById("save").addEventListener("click", saveOptions);
+document.getElementById("save").addEventListener("click", buildQueryArray);

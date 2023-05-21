@@ -8,9 +8,7 @@
         "*://*.rightmove.co.uk/*",
         "*://*.google.com/*"
     ],
-    "css": [
-        "main.css"
-    ],
+    "css": [],
     "js": ["main.js", "rightmoveClassNames.js"]
   }],
   "host_permissions": ["<all_urls>"],
