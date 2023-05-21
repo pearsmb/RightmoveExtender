@@ -13,18 +13,18 @@
 //     /**
 //      * Distance container classname.
 //      */
-//     distContainer: "Hx6myckw6FR-gq2-nskGM",
+//     distElements: "Hx6myckw6FR-gq2-nskGM",
 //     /**
 //      * Distance span container classname.
 //      */
-//     spanContainer: "mlEuHXZpfrrzJtwlRmwBe",
+//     location: "cGDiWU3FlTjqSs-F1LwK4",
 //     /**
 //      * Location span classname.
 //      */
-//     locSpan: "cGDiWU3FlTjqSs-F1LwK4",
+//     distance: "_1ZY603T1ryTT3dMgGkM7Lg",
 //     /**
 //      * Distance span classname.
 //      */
-//     distSpan: "Hx6myckw6FR-gq2-nskGM",
+//     spanContainer: "mlEuHXZpfrrzJtwlRmwBe",
 // };
 

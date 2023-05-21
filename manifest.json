@@ -13,10 +13,8 @@
     ],
     "js": ["main.js", "rightmoveClassNames.js"]
   }],
-  "background": {
-    "service_worker": "serviceWorker.js"
-  },
   "host_permissions": ["<all_urls>"],
+  "permissions": ["storage"],
   "options_ui": {
     "page": "opt.html"
   }
