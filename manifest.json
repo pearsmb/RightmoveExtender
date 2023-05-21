@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Rightmove Extender",
+  "version": "0.1",
+  "description": "Searches for the nearest locations of users choosing.",
+  "content_scripts": [{
+    "matches": [
+        "*://*.rightmove.co.uk/*",
+        "*://*.google.com/*"
+    ],
+    "css": [
+        "main.css"
+    ],
+    "js": ["main.js" ]
+        
+  }]
+}
