@@ -11,7 +11,13 @@
     "css": [
         "main.css"
     ],
-    "js": ["main.js" ]
-        
-  }]
+    "js": ["main.js", "rightmoveClassNames.js"]
+  }],
+  "background": {
+    "service_worker": "serviceWorker.js"
+  },
+  "host_permissions": ["<all_urls>"],
+  "options_ui": {
+    "page": "opt.html"
+  }
 }
