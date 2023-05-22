@@ -3,8 +3,10 @@
  * @param {string} query - the query parameter
  * @returns  HTML input query template.
  */
-const createQueryTemplate = (query = "") => `<input type="text" class="query-input" name="query" value="${query}" placeholder="search query...">`;
-const insertQueryTemplate = (template) => document.querySelector(".query-container").insertAdjacentHTML("beforeend", template);
+const createQueryTemplate = (query = "") => `<input type="text" class="query-input disabled" name="query" value="${query}">`;
+const insertQueryTemplate = (template) => {
+  document.querySelector(".query-container").insertAdjacentHTML("beforeend", template);
+} 
 
 /**
  * Builds up the query array from the UI.
@@ -53,11 +55,6 @@ const restoreOptions = () => {
  */
 const buildOptionsDisplay = (queries) => {
 
-    // If no queries are stored in localStorage, add one empty query by default.
-    if(queries.length == 0) {
-        createQueryTemplate();
-    }
-
   // for each query parameter, create and append the HTML element.
   queries.forEach((query) => {
     let template = createQueryTemplate(query);
@@ -69,8 +66,13 @@ const buildOptionsDisplay = (queries) => {
  * Event Listener for adding a query.
  */
 document.querySelector(".add-query").addEventListener("click", () => {
-    let template = createQueryTemplate();
-    insertQueryTemplate(template);
+
+    let input = document.getElementById("query-input");
+    if(input.value != ""){
+      let template = createQueryTemplate(input.value);
+      insertQueryTemplate(template);
+      input.value = "";
+    }
 });
 
 document.addEventListener("DOMContentLoaded", restoreOptions);

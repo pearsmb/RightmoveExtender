@@ -2,19 +2,30 @@
 <html>
   <head>
     <title>Rightmove Extender Options</title>
-    <link rel="stylesheet" href="opt.css">
+    <link rel="stylesheet" href="opt.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
-
+    <div class="query-add-container flex flex-direction-row">
+      <input
+        id="query-input"
+        type="text"
+        class="query-input"
+        name="query"
+        placeholder="search query..."
+      />
+      <button class="btn button add-query"><i class="fa fa-plus"></i></button>
+    </div>
     <div class="query-container flex flex-direction-col">
     </div>
 
-    <div>
-        <button class="add-query">add query</button>
-    </div>
-
     <div id="status"></div>
-    <button id="save">Save</button>
+    <div class="flex align-end">
+      <button id="save" class="button save">Save Queries</button>
+    </div>
 
     <script src="opt.js"></script>
   </body>

@@ -1,11 +1,71 @@
+html,
+body {
+  background: #535353;
+}
+
 .flex {
-    display: flex;
+  display: flex;
+}
+
+.align-end {
+  justify-content: end;
 }
 
 .flex-direction-row {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .flex-direction-col {
-    flex-direction: column;
+  flex-direction: column;
+}
+
+.query-container {
+  max-height: 40vw;
+  overflow-y: auto;
+}
+
+.query-add-container {
+  margin-bottom: 9px;
+}
+
+.query-input {
+  margin: 3px;
+  padding: 6px;
+  border: 2px solid gray;
+  border-radius: 4px;
+  outline: none;
+  flex: 1;
+}
+
+query-input.query-complete {
+  pointer-events: none;
+  background: #00b292;
+}
+
+.query-input:focus {
+  border: 2px solid #00b292;
+}
+
+.query-input.disabled {
+  pointer-events: none;
+  color: white;
+  background: gray;
+}
+
+.button {
+  color: white;
+  border-radius: 4px;
+  padding: 6px;
+  margin: 3px;
+}
+
+.button.add-query {
+  border: none;
+  background: #00b292;
+  width: 32px;
+}
+
+.button.save {
+  border: 2px solid #00b292;
+  background: #00b292;
 }
