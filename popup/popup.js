@@ -3,22 +3,25 @@
  * @param {string} query - the query parameter
  * @returns  HTML input query template.
  */
-const createQueryTemplate = (query = "") => `<input type="text" class="query-input disabled" name="query" value="${query}">`;
+const createQueryTemplate = (query = "") =>
+  `<input type="text" class="query-input disabled" name="query" value="${query}">`;
 const insertQueryTemplate = (template) => {
-  document.querySelector(".query-container").insertAdjacentHTML("beforeend", template);
-} 
+  document
+    .querySelector(".query-container")
+    .insertAdjacentHTML("beforeend", template);
+};
 
 /**
  * Builds up the query array from the UI.
  */
 const buildQueryArray = () => {
-    let queries = [];
+  let queries = [];
 
-    let elems = document.querySelectorAll(".query-input");
-    elems.forEach(elem => {
-        queries.push(elem.value);
-    });
-    saveOptions(queries);
+  let elems = document.querySelectorAll(".query-input");
+  elems.forEach((elem) => {
+    queries.push(elem.value);
+  });
+  saveOptions(queries);
 };
 
 // Saves options to chrome.storage
@@ -41,12 +44,9 @@ const saveOptions = (queries) => {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 const restoreOptions = () => {
-  chrome.storage.sync.get(
-    {queries: []},
-    (items) => {
-      buildOptionsDisplay(items.queries);
-    }
-  );
+  chrome.storage.sync.get({ queries: [] }, (items) => {
+    buildOptionsDisplay(items.queries);
+  });
 };
 
 /**
@@ -54,11 +54,12 @@ const restoreOptions = () => {
  * @param {array} queries - the query parameters.
  */
 const buildOptionsDisplay = (queries) => {
-
   // for each query parameter, create and append the HTML element.
   queries.forEach((query) => {
-    let template = createQueryTemplate(query);
-    insertQueryTemplate(template);
+    if (query !== "") {
+      let template = createQueryTemplate(query);
+      insertQueryTemplate(template);
+    }
   });
 };
 
@@ -66,13 +67,12 @@ const buildOptionsDisplay = (queries) => {
  * Event Listener for adding a query.
  */
 document.querySelector(".add-query").addEventListener("click", () => {
-
-    let input = document.getElementById("query-input");
-    if(input.value != ""){
-      let template = createQueryTemplate(input.value);
-      insertQueryTemplate(template);
-      input.value = "";
-    }
+  let input = document.getElementById("query-input");
+  if (input.value != "") {
+    let template = createQueryTemplate(input.value);
+    insertQueryTemplate(template);
+    input.value = "";
+  }
 });
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
